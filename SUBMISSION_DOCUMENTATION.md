@@ -20,7 +20,7 @@
 ## B. Repository and Submission Details
 
 - **GitHub Fork Repository URL:** https://github.com/Bhavya-AroraID/MSE-2-SSED-Evening
-- **GitHub Pull Request URL:** https://github.com/atindeRR/MSE-2-SSED-Evening/pull/[PR_NUMBER]
+- **GitHub Pull Request URL:** https://github.com/atindeRR/MSE-2-SSED-Evening/pull/167
 - **Branch Name:** main
 - **Docker Hub Frontend Image URL:** https://hub.docker.com/r/bhavya2718/frontend
 - **Docker Hub Backend Image URL:** https://hub.docker.com/r/bhavya2718/backend
