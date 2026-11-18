@@ -1,6 +1,7 @@
 # Practical Examination Documentation
 ## Subject: Software Engineering and DevOps (AI310B)
 ### Examination: Mid-Semester Examination – 2 (Evening Shift) – Set 2
+### Institution: KIET Group of Institutions
 
 ---
 
@@ -8,10 +9,11 @@
 
 - **Student Name:** Bhavya Arora
 - **Roll Number:** [ENTER_YOUR_COLLEGE_ROLL_NUMBER]
-- **Section:** [ENTER_YOUR_SECTION_EG_AIML_A]
-- **Branch:** Computer Science & Engineering (AIML)
+- **Section:** [ENTER_YOUR_SECTION]
+- **Branch / Course:** BTech CSE AI&ML
+- **College:** KIET Group of Institutions
 - **GitHub Username:** Bhavya-AroraID
-- **Docker Hub Username:** [ENTER_YOUR_DOCKERHUB_USERNAME]
+- **Docker Hub Username:** bhavya2718
 
 ---
 
@@ -20,8 +22,8 @@
 - **GitHub Fork Repository URL:** https://github.com/Bhavya-AroraID/MSE-2-SSED-Evening
 - **GitHub Pull Request URL:** https://github.com/atindeRR/MSE-2-SSED-Evening/pull/[PR_NUMBER]
 - **Branch Name:** main
-- **Docker Hub Frontend Image URL:** https://hub.docker.com/r/[YOUR_DOCKERHUB_USERNAME]/frontend
-- **Docker Hub Backend Image URL:** https://hub.docker.com/r/[YOUR_DOCKERHUB_USERNAME]/backend
+- **Docker Hub Frontend Image URL:** https://hub.docker.com/r/bhavya2718/frontend
+- **Docker Hub Backend Image URL:** https://hub.docker.com/r/bhavya2718/backend
 - **GitHub Actions Workflow Run URL:** https://github.com/Bhavya-AroraID/MSE-2-SSED-Evening/actions
 
 ---
@@ -29,8 +31,8 @@
 ## C. Implementation Architecture & Deliverables
 
 ### 1. Frontend Dockerfile (`frontend/Dockerfile`)
-- **Multi-Stage Build Architecture:**
-  - **Stage 1 (Build):** `node:20-alpine` builds the React application using Vite (`npm run build`), generating production static bundles inside `/app/dist`.
+- **Multi-Stage Build Pattern:**
+  - **Stage 1 (Build):** `node:20-slim` builds the React application using Vite (`npm run build`), generating production static bundles inside `/app/dist`. Using `node:20-slim` (Debian glibc) natively supports Rollup and esbuild binaries.
   - **Stage 2 (Production Runtime):** `nginx:1.27-alpine` acts as a lightweight web server serving static files from `/usr/share/nginx/html`.
 - **Reverse Proxy:** Nginx routes `/api/` and `/health` requests directly to backend container `http://backend:3000`.
 - **Healthcheck:** Uses built-in Busybox `wget` to ping `http://127.0.0.1/` every 10 seconds.
@@ -65,8 +67,8 @@
 - Sets up Docker Buildx and authenticates to Docker Hub using GitHub Secrets (`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`).
 - Builds backend and frontend images.
 - Tags images with both `v1` and `latest`:
-  - `${DOCKERHUB_USERNAME}/backend:v1` and `latest`
-  - `${DOCKERHUB_USERNAME}/frontend:v1` and `latest`
+  - `bhavya2718/backend:v1` and `latest`
+  - `bhavya2718/frontend:v1` and `latest`
 - Pushes all four image tags to Docker Hub.
 - Automatically generates `.env` using `${{ secrets.POSTGRES_PASSWORD }}` and `${{ secrets.DOCKERHUB_USERNAME }}`.
 - Deploys application using `docker-compose.deploy.yml`.
@@ -90,8 +92,8 @@
 ### Evidence 2: Docker Compose Running Services
 ```text
 NAME                                 IMAGE                          STATUS                   PORTS
-mse-2-ssed-evening-backend-1         taskflow-backend               Up (healthy)             0.0.0.0:3000->3000/tcp
-mse-2-ssed-evening-frontend-1        taskflow-frontend              Up (healthy)             0.0.0.0:8080->80/tcp
+mse-2-ssed-evening-backend-1         bhavya2718/backend:latest      Up (healthy)             0.0.0.0:3000->3000/tcp
+mse-2-ssed-evening-frontend-1        bhavya2718/frontend:latest     Up (healthy)             0.0.0.0:8080->80/tcp
 mse-2-ssed-evening-postgres-1        postgres:16-alpine             Up (healthy)             5432/tcp
 mse-2-ssed-evening-redis-1           redis:7-alpine                 Up (healthy)             6379/tcp
 ```
@@ -112,8 +114,8 @@ mse-2-ssed-evening-redis-1           redis:7-alpine                 Up (healthy)
 
 ### Evidence 5: Docker Hub Image Publication
 - Tagged and published repositories:
-  - `[YOUR_DOCKERHUB_USERNAME]/frontend:v1` & `latest`
-  - `[YOUR_DOCKERHUB_USERNAME]/backend:v1` & `latest`
+  - `bhavya2718/frontend:v1` & `latest`
+  - `bhavya2718/backend:v1` & `latest`
 *(Insert Screenshot: Docker Hub web page showing both repositories and tags)*
 
 ### Evidence 6: GitHub Actions Workflow Execution
