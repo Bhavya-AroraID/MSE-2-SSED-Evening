@@ -8,8 +8,8 @@
 ## A. Student Information
 
 - **Student Name:** Bhavya Arora
-- **Roll Number:** [ENTER_YOUR_COLLEGE_ROLL_NUMBER]
-- **Section:** [ENTER_YOUR_SECTION]
+- **Roll Number:** 202401100400072
+- **Section:** AIML-A
 - **Branch / Course:** BTech CSE AI&ML
 - **College:** KIET Group of Institutions
 - **GitHub Username:** Bhavya-AroraID
